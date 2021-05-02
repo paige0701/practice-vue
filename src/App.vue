@@ -1,16 +1,12 @@
 <template>
   <div id="app">
 <!--    <Test :isActive="isActive" :title="title"></Test>-->
-    <AddTodo></AddTodo>
-    <FilterTodos></FilterTodos>
-    <Todos></Todos>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import AddTodo from "@/components/AddTodo";
 export default {
-  components: {AddTodo}
 }
 </script>
 <script>
