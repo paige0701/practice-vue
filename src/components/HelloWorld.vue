@@ -8,6 +8,11 @@
 <script>
 export default {
   name: 'HelloWorld',
+  created() {
+    let b = {a: '1'}
+    let a = {...b};
+    console.log(a);
+  },
   methods: {
     goTodo() {
       this.$router.push({path: "todos"})
