@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<!--    <Test :isActive="isActive" :title="title"></Test>-->
+    <AddTodo></AddTodo>
+    <FilterTodos></FilterTodos>
+    <Todos></Todos>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AddTodo from "@/components/AddTodo";
+export default {
+  components: {AddTodo}
+}
+</script>
+<script>
+import Test from "@/components/Test";
+import Todos from "@/components/Todos";
+import AddTodo from "@/components/AddTodo";
+import FilterTodos from "@/components/FilterTodos";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+     Test,
+    Todos,
+    AddTodo,
+    FilterTodos
+  },
+  data() {
+    return {
+      isActive: true,
+      title: "Paige"
+    }
   }
 }
 </script>
