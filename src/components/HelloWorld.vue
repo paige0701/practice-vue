@@ -2,6 +2,8 @@
   <div class="hello">
     <h1>Home</h1>
     <a @click="goTodo">Todo</a>
+    <br/>
+    <a @click="goTodoByName">할일</a>
   </div>
 </template>
 
@@ -16,6 +18,9 @@ export default {
   methods: {
     goTodo() {
       this.$router.push({path: "todos"})
+    },
+    goTodoByName() {
+      this.$router.push({name: "Todos"})
     }
   }
 }
