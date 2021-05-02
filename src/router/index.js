@@ -8,6 +8,6 @@ Vue.use(Router)
 export default new Router({
 	routes: [
 		HelloWorld.ROUTES,
-		Todos.ROUTES
+		...Todos.ROUTES
 	], mode: 'history' // remove # from url
 })
