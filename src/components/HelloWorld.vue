@@ -8,12 +8,20 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
-  created() {
-    let b = {a: '1'}
-    let a = {...b};
-    console.log(a);
+  async created() {
+    try {
+      const response = await axios.get("https://jsonplaceholder.typicode.com/todos")
+      if (response.data) {
+        const detail = await axios.get("https://jsonplaceholder.typicode.com/todos")
+        console.log(detail);
+      }
+    } catch (e) {
+      console.error("Fail request", e);
+    }
   },
   methods: {
     goTodo() {
