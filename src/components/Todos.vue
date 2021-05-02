@@ -42,7 +42,7 @@ export default {
     },
     onClick(v) {
       this.$router.push({
-        path: `todos/:id`, params: {
+        name: 'TodoDetail', params: {
           id: v
         }
       })
