@@ -22,8 +22,7 @@ const actions = {
         https://jsonplaceholder.typicode.com/todos/${id}`)
         commit('removeTodo', id)
     },
-    async filterTodos({commit}, event) {
-        const limit = event.target.value
+    async filterTodos({commit}, limit) {
         const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`)
         commit('setTodos', response.data)
 

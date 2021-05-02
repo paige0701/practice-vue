@@ -1,6 +1,8 @@
 <template>
   <div>
     <h3>Todos</h3>
+    <AddTodo></AddTodo>
+    <FilterTodos></FilterTodos>
     <div class="legend">
       <span>Double click to mark as complete</span>
       <span>
@@ -21,8 +23,11 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import FilterTodos from "@/components/FilterTodos";
+import AddTodo from "@/components/AddTodo";
 export default {
   name: 'todos',
+  components: {AddTodo, FilterTodos},
   computed: mapGetters(["allTodos"]),
   methods: {
     ...mapActions(['fetchTodos', 'deleteTodo', "updateTodo"]),
