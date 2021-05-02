@@ -13,8 +13,9 @@
       </span>
     </div>
     <div class="todos">
-      <div @dblclick="ondblclick(todo)" @click="onClick(todo.id)" class="todo" v-bind:class="{'is-complete': todo.completed}" v-for="todo in allTodos" :key="todo.id">
-        {{todo.title}}
+      <div @dblclick="ondblclick(todo)" @click="onClick(todo.id)" class="todo"
+           v-bind:class="{'is-complete': todo.completed}" v-for="todo in allTodos" :key="todo.id">
+        {{ todo.title }}
         <i @click="deleteTodo(todo.id)" class="fas fa-trash-alt"></i>
       </div>
     </div>
@@ -22,9 +23,10 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 import FilterTodos from "@/components/FilterTodos";
 import AddTodo from "@/components/AddTodo";
+
 export default {
   name: 'todos',
   components: {AddTodo, FilterTodos},
@@ -32,14 +34,18 @@ export default {
   methods: {
     ...mapActions(['fetchTodos', 'deleteTodo', "updateTodo"]),
     ondblclick(todo) {
-      const updTodo =  {
+      const updTodo = {
         ...todo,
         completed: !todo.completed
       }
       this.updateTodo(updTodo)
     },
-    onClick(id) {
-      this.$router.push({path: `todos/${id}`})
+    onClick(v) {
+      this.$router.push({
+        path: `todos/:id`, params: {
+          id: v
+        }
+      })
     }
   },
   created() {
@@ -53,6 +59,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 }
+
 .todo {
   border: 1px solid #ccc;
   background: #41b883;
@@ -62,6 +69,7 @@ export default {
   position: relative;
   cursor: pointer;
 }
+
 i {
   position: absolute;
   bottom: 10px;
@@ -69,27 +77,32 @@ i {
   color: #fff;
   cursor: pointer;
 }
+
 .legend {
   display: flex;
   justify-content: space-around;
   margin-bottom: 1rem;
 }
+
 .complete-box {
   display: inline-block;
   width: 10px;
   height: 10px;
   background: #35495e;
 }
+
 .incomplete-box {
   display: inline-block;
   width: 10px;
   height: 10px;
   background: #41b883;
 }
+
 .is-complete {
   background: #35495e;
   color: #fff;
 }
+
 @media (max-width: 500px) {
   .todos {
     grid-template-columns: 1fr;
