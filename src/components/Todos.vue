@@ -13,7 +13,7 @@
       </span>
     </div>
     <div class="todos">
-      <div @dblclick="ondblclick(todo)" class="todo" v-bind:class="{'is-complete': todo.completed}" v-for="todo in allTodos" :key="todo.id">
+      <div @dblclick="ondblclick(todo)" @click="onClick(todo.id)" class="todo" v-bind:class="{'is-complete': todo.completed}" v-for="todo in allTodos" :key="todo.id">
         {{todo.title}}
         <i @click="deleteTodo(todo.id)" class="fas fa-trash-alt"></i>
       </div>
@@ -37,6 +37,9 @@ export default {
         completed: !todo.completed
       }
       this.updateTodo(updTodo)
+    },
+    onClick(id) {
+      this.$router.push({path: `todos/${id}`})
     }
   },
   created() {

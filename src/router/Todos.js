@@ -1,4 +1,5 @@
 import Todos from "@/components/Todos";
+import TodoDetail from "@/components/TodoDetail";
 
 export default {
 	ROUTES: [
@@ -9,8 +10,9 @@ export default {
 		},
 		{
 			path: '/todos/:id',
-			name: 'Todos',
-			component: Todos
+			name: 'TodoDetail',
+			component: TodoDetail,
+			props: true
 		}
 	]
 }

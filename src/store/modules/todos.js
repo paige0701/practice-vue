@@ -2,16 +2,22 @@ import axios from "axios";
 
 const state = {
     todos: [
-    ]
-
+    ],
+    todo: ''
 }
 const getters = {
-    allTodos: (state) => state.todos
+    allTodos: (state) => state.todos,
+    currentTodo: (state) => state.todo
 }
 const actions = {
     async fetchTodos({commit}) {
         const response = await axios.get('https://jsonplaceholder.typicode.com/todos')
         commit('setTodos', response.data)
+    },
+    async fetchTodoDetail({commit}, id) {
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        commit('setTodo', response.data)
+
     },
     async addTodo({commit}, title) {
         const response = await axios.post('https://jsonplaceholder.typicode.com/todos', {title, completed: false})
@@ -41,7 +47,8 @@ const mutations = {
         if (idx !== -1) {
             state.todos.splice(idx, 1, updTodo)
         }
-    }
+    },
+    setTodo: (state, todo) => state.todo = todo
 }
 
 export default {
